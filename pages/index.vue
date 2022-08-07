@@ -1,6 +1,8 @@
 <template>
-  <div class="w-screen h-screen md:flex md:justify-center md:items-center">
-    <div class="bg-white w-full md:max-w-lg p-8 md:p-0">
+  <div
+    class="w-screen h-screen md:flex md:justify-center md:items-center dark:bg-slate-900 dark:text-white"
+  >
+    <div class="w-full md:max-w-lg p-8 md:p-0">
       <div class="flex justify-between mb-3">
         <h1 class="text-4xl font-bold">Rico</h1>
         <img
@@ -29,18 +31,24 @@
         >
           Documentation
         </button>
-        <button
-          class="bg-purple-500 hover:bg-purple-400 active:bg-purple-600 rounded-md font-semibold text-white md:col-span-2 p-4"
+        <nuxt-link
+          class="text-center bg-purple-500 hover:bg-purple-400 active:bg-purple-600 rounded-md font-semibold text-white md:col-span-2 p-4"
+          :to="isAuthenticated ? '/dashboard' : '/login'"
         >
-          Dashboard
-        </button>
+          Open dashboard
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'IndexPage',
+  computed: {
+    ...mapGetters(['isAuthenticated']),
+  },
 }
 </script>
