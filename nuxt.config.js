@@ -1,7 +1,3 @@
-import { readFileSync } from 'fs'
-import { parse } from 'yaml'
-const config = parse(readFileSync('./config.yml', 'utf8'))
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -50,7 +46,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
@@ -59,16 +54,6 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
-  },
-
-  // Auth module config
-  auth: {
-    strategies: {
-      discord: {
-        clientId: config.dashboard.discord_oauth.client_id,
-        clientSecret: config.dashboard.discord_oauth.client_secret,
-      },
-    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
