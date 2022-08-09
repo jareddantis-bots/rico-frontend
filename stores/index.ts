@@ -24,5 +24,8 @@ export const useStore = defineStore('main', {
       this.sessionId = sessionId
       this.sessionExpiry = sessionExpiry
     }
+  },
+  persist: {
+    paths: ['sessionId', 'sessionExpiry']
   }
 })

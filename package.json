@@ -13,6 +13,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.3.1",
     "@tailwindcss/typography": "^0.5.4",
-    "pinia": "^2.0.17"
+    "pinia": "^2.0.17",
+    "pinia-plugin-persistedstate": "^2.1.0"
   }
 }
