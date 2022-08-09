@@ -33,7 +33,7 @@
         </button>
         <nuxt-link
           class="text-center bg-purple-500 hover:bg-purple-400 active:bg-purple-600 rounded-md font-semibold text-white md:col-span-2 p-4"
-          :to="isAuthenticated ? '/dashboard' : '/login'"
+          :to="store.isLoggedIn ? '/dashboard' : '/login'"
         >
           Open dashboard
         </nuxt-link>
@@ -43,12 +43,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { useStore } from '@/stores'
 
 export default {
   name: 'IndexPage',
-  computed: {
-    ...mapGetters(['isAuthenticated']),
-  },
+  setup() {
+    const store = useStore()
+    return { store }
+  }
 }
 </script>

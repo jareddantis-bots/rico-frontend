@@ -12,32 +12,41 @@
       <p class="mt-2 mb-8">Manage Rico for your server</p>
       <button
         class="text-center bg-purple-500 hover:bg-purple-400 active:bg-purple-600 rounded-md font-semibold text-white w-full p-4 disabled:opacity-50 disabled:cursor-not-allowed"
-        :disabled="isAuthenticated"
+        :disabled="store.isLoggedIn"
         @click="login"
       >
-        Log in to Discord
+        Log in with Discord
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { useStore } from '@/stores'
 
 export default {
   name: 'LoginPage',
-  computed: {
-    ...mapGetters(['isAuthenticated']),
+  setup() {
+    const store = useStore()
+    const config = useRuntimeConfig()
+    return { store, config }
   },
   beforeMount() {
+    // Check if session ID is in query parameters
+    const query = this.$route.query
+    if (query.session_id !== null && query.expires_at !== null) {
+      // Save session ID and expiry to state
+      this.store.login(query.session_id, parseInt(query.expires_at))
+    }
+
     // Redirect to dashboard if already logged in
-    if (this.isAuthenticated) {
+    if (this.store.isLoggedIn) {
       this.$router.push('/dashboard')
     }
   },
   methods: {
-    async login() {
-      await this.$auth.loginWith('discord')
+    login() {
+      window.location.href = this.config.apiBase + '/auth/login'
     },
   },
 }
