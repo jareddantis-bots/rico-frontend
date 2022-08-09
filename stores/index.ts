@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 
 interface RicoState {
   username: string | null,
+  userId: number | null,
   avatar: string | null,
   sessionId: string | null,
   sessionExpiry: number | null,
@@ -10,6 +11,7 @@ interface RicoState {
 export const useStore = defineStore('main', {
   state: (): RicoState => ({
     username: null,
+    userId: null,
     avatar: null,
     sessionId: null,
     sessionExpiry: null
@@ -23,6 +25,13 @@ export const useStore = defineStore('main', {
     login (sessionId, sessionExpiry) {
       this.sessionId = sessionId
       this.sessionExpiry = sessionExpiry
+    },
+    setUser (username, userId) {
+      this.username = username
+      this.userId = userId
+    },
+    setAvatar (avatar) {
+      this.avatar = avatar
     }
   },
   persist: {
