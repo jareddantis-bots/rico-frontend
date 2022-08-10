@@ -1,5 +1,7 @@
 <template>
-  <p>dashboard</p>
+  <div>
+    <h1>Dashboard</h1>
+  </div>
 </template>
 
 <script>
@@ -15,8 +17,16 @@ export default {
   },
   mounted() {
     // Get user details
-    const { data } = $fetch(this.config.public.apiBase + '/discord/me')
-    console.log(data)
+    $fetch('/api/me')
+        .then((data) => {
+          // Save to state
+          this.store.setUser(data.me.username, data.me.id)
+          this.store.setAvatar(data.me.avatar)
+        })
+        .catch((error) => {
+          console.error(error);
+          this.$router.push('/login')
+        })
   }
 }
 </script>
