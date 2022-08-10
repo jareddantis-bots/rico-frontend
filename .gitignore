@@ -89,5 +89,5 @@ sw.*
 # Vim swap files
 *.swp
 
-# Rico config
-config.yml
+# Nuxt build
+.output/
