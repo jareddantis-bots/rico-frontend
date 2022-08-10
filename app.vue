@@ -76,6 +76,7 @@ export default {
           store.setUser(data.me.username, data.me.id)
           store.setAvatar(data.me.avatar)
         })
+        .catch(() => {})
 
     return { store, config }
   },
