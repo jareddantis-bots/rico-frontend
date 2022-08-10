@@ -2,7 +2,7 @@
   <div
     class="w-full h-full flex justify-center items-center"
   >
-    <div class="bg-white w-72 p-8 rounded-lg text-center">
+    <div class="bg-white w-72 p-8 rounded-lg text-center text-black">
       <img
         src="/rico.png"
         alt="Rico"
