@@ -6,7 +6,7 @@
     <!-- Navbar -->
     <nav
         v-show="store.isLoggedIn && $route.path.startsWith('/dashboard')"
-        class="w-full position-sticky flex justify-between items-center px-8 py-4"
+        class="w-full position-sticky flex justify-between items-center px-6 py-4"
     >
       <!-- Navlinks -->
       <div
@@ -54,9 +54,7 @@
       </div>
     </nav>
 
-    <NuxtPage
-      class="p-8"
-    />
+    <NuxtPage class="p-8"/>
   </div>
 </template>
 
