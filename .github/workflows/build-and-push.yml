@@ -9,7 +9,7 @@ on:
       - 'main'
 
 env:
-  DOCKERHUB_REPOSITORY: 'jareddantis/rico-backend'
+  DOCKERHUB_REPOSITORY: 'jareddantis/rico-frontend'
 
 jobs:
   build:
