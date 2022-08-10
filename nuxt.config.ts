@@ -22,6 +22,10 @@ export default defineNuxtConfig({
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'
+      }
     ],
   },
 
@@ -33,7 +37,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiBase: process.env.NUXT_API_BASE || 'http://localhost:5000/api/v1',
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://rico.dantis.me/api/v1'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://rico.dantis.me/api/v1',
+      githubUrl: process.env.NUXT_PUBLIC_REPO_URL || 'https://github.com/jareddantis-bots/rico'
     }
   }
 })
