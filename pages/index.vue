@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-screen md:flex md:justify-center md:items-center dark:bg-slate-900 dark:text-white"
+    class="w-full h-full md:flex md:justify-center md:items-center"
   >
     <div class="w-full md:max-w-lg p-8 md:p-0">
       <div class="flex justify-between mb-3">

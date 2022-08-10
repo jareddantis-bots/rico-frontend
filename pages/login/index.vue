@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-screen flex justify-center items-center dark:bg-slate-900"
+    class="w-full h-full flex justify-center items-center"
   >
     <div class="bg-white w-72 p-8 rounded-lg text-center">
       <img
