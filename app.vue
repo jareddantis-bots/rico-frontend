@@ -22,7 +22,7 @@
         </span>
 
         <!-- Home button -->
-        <span class="font-bold text-xl">Rico</span>
+        <span class="font-bold">Rico</span>
 
         <!-- Other links -->
         <a
@@ -30,7 +30,7 @@
             :href="link.link"
             rel="noopener"
             target="_blank"
-            class="text-slate-400 hover:text-slate-100 text-xl"
+            class="hidden md:inline text-slate-400 hover:text-slate-100"
         >
           {{ link.text }}
         </a>
@@ -42,7 +42,7 @@
       >
         <!-- User details -->
         <h6
-          class="text-right text-white"
+          class="text-right text-white hidden md:inline-block"
         >
           Hi, <strong>{{ store.username || 'User' }}</strong>
         </h6>
@@ -68,6 +68,15 @@ export default {
   setup() {
     const store = useStore()
     const config = useRuntimeConfig()
+
+    // Get user details
+    $fetch('/api/me')
+        .then((data) => {
+          // Save to state
+          store.setUser(data.me.username, data.me.id)
+          store.setAvatar(data.me.avatar)
+        })
+
     return { store, config }
   },
   data() {
