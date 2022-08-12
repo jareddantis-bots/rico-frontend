@@ -35,6 +35,6 @@ export const useStore = defineStore('main', {
     }
   },
   persist: {
-    paths: ['sessionId', 'sessionExpiry']
+    paths: ['sessionId', 'sessionExpiry', 'username', 'userId', 'avatar']
   }
 })
