@@ -36,8 +36,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE,
-      githubUrl: process.env.NUXT_PUBLIC_REPO_URL || 'https://github.com/jareddantis-bots/rico'
+      apiBase: '',
+      githubUrl: 'https://github.com/jareddantis-bots/rico'
     }
   }
 })
