@@ -19,6 +19,7 @@ export const useStore = defineStore('main', {
   getters: {
     getUsername: (state) => state.username,
     getAvatar: (state) => state.avatar,
+    getCookie: (state) => `Bearer ${state.sessionId}`,
     isLoggedIn: (state) => state.sessionId !== null && state.sessionExpiry > Date.now()
   },
   actions: {

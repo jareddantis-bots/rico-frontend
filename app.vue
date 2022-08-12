@@ -66,16 +66,6 @@ export default {
   setup() {
     const store = useStore()
     const config = useRuntimeConfig()
-
-    // Get user details
-    $fetch('/api/me')
-        .then((data) => {
-          // Save to state
-          store.setUser(data.me.username, data.me.id)
-          store.setAvatar(data.me.avatar)
-        })
-        .catch(() => {})
-
     return { store, config }
   },
   data() {

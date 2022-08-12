@@ -26,6 +26,7 @@
                   v-if="note.type.startsWith('spotify:')"
                   src="/Spotify_Logo_RGB_White.png"
                   class="h-6 py-1"
+                  alt="Spotify"
               >
               <span
                   v-else
@@ -75,6 +76,8 @@
 </template>
 
 <script>
+import { useStore } from '@/stores'
+
 export default {
   name: 'NotesPage',
   data() {
@@ -82,6 +85,11 @@ export default {
       loading: true,
       notes: []
     }
+  },
+  setup() {
+    const store = useStore()
+    const config = useRuntimeConfig()
+    return { store, config }
   },
   created() {
     this.$watch(
@@ -95,7 +103,11 @@ export default {
   methods: {
     fetchData() {
       this.loading = true
-      $fetch('/api/notes')
+      $fetch(`${this.config.apiBase}/notes/me`, {
+        headers: {
+          'Authorization': this.store.getCookie
+        }
+      })
           .then((data) => {
             // Turn timestamps into strings
             this.notes = data.map((note) => {

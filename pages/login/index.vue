@@ -32,13 +32,6 @@ export default {
     return { store, config }
   },
   beforeMount() {
-    // Check if session ID is in query parameters
-    const query = this.$route.query
-    if (query.session_id !== null && query.expires_at !== null) {
-      // Save session ID and expiry to state
-      this.store.login(query.session_id, parseInt(query.expires_at))
-    }
-
     // Redirect to dashboard if already logged in
     if (this.store.isLoggedIn) {
       this.$router.push('/dashboard')
@@ -46,8 +39,8 @@ export default {
   },
   methods: {
     login() {
-      window.location.href = this.config.apiBase + '/auth/login'
-    },
-  },
+      window.location.href = `${this.config.apiBase}/auth/login`
+    }
+  }
 }
 </script>
